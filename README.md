@@ -1,25 +1,16 @@
 flask-file-uploader
 ===================
+bibliotecas nesesarias
 
-## Description
-File Upload Script which built on Python Flask and [jQuery-File-Upload](https://github.com/blueimp/jQuery-File-Upload/) with multiple file selection, drag&amp;drop support, progress bars, validation and preview images, audio and video for jQuery.
-
-
-## Setup
-- Install system package. See the `system_package.txt` file. (*Unix)
-
-- Create virtual enviroment (use `virtualenv`) and activate it.
-
-- Then install python packages:  
-```
-$ pip install -r requirements.txt
+Flask
+Flask-Bootstrap
+simplejson
+Pillow
 ```
 
-- Run it:
+- Correr el proyecto
 
 ```
 $ python app.py
 ```
-
-- Go to http://127.0.0.1
 
