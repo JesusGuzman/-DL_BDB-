@@ -1,36 +1,73 @@
-from flask import Flask, render_template, json, request
-from werkzeug import generate_password_hash, check_password_hash
-from sklearn.naive_bayes import GaussianNB
-import numpy as np
+from flask import Flask, render_template, json, request, jsonify
+from PIL import Image
 
 app = Flask(__name__)
+
+tasks = [
+    {
+        'id': 1,
+        'nombre': u'Cactus',
+        'raza': u'salchicha',
+        'edad': u'2 anios',
+        'color': u'negro con cafe',
+        'descripcion': u'Es un perro muy docil trae un collar rojo', 
+        'fecha de extravio': u'11-11-2017',
+        'lugar de extravio': u'Amsterdam 173, Condesa, CDMX'
+    },
+    {
+        'id': 2,
+        'nombre': u'tayson',
+        'raza': u'pitbull',
+        'edad': u'5 anios',
+        'color': u'Gris/blue',
+        'descripcion': u'Tyson es un perro muy grande y gordo suele traer la lengua de fuera', 
+        'fecha de extravio': u'01-12-2016',
+        'lugar de extravio': u'Av Cuauhtemoc 1236, Benito Juarez, CDMX'
+    },
+    {
+        'id': 3,
+        'nombre': u'snoppy',
+        'raza': u'dogo argentino',
+        'edad': u'8 meses',
+        'color': u'blanco',
+        'descripcion': u'en perro muy grande con collar de cuero y una cicatriz en la oreja', 
+        'fecha de extravio': u'23-04-2017',
+        'lugar de extravio': u'Centro Atlixco, Puebla'
+    }
+]
+
 
 @app.route('/')
 def main():
     return render_template('index.html')
 
-@app.route('/showSignUp')
-def showSignUp():
-    return render_template('signup.html')
+@app.route('/dogs', methods=['GET'])
+def get_dogs():
+    return jsonify({'tasks': tasks})
 
+@app.route('/new_dog', methods=['POST'])
+def add_dog():
+    #if not request.json or not 'nombre' in request.json:
+    #    abort(400)
+    var = request.json['nombre']
+    task = {
+        'id': tasks[-1]['id'] + 1,
+        'nombre': request.json['nombre'],
+        'raza': request.json['raza'],
+        'edad': request.json['edad'],
+        'color': request.json['color'],
+        'descripcion': request.json['descripcion'],
+        'fecha de extravio': request.json['fecha'],
+        'lugar de extravio': request.json['lugar']
+    }
+    tasks.append(task)
+    return jsonify({'task': task}), 201
 
-@app.route('/signUp',methods=['POST','GET'])
-def signUp():
-        _peso = request.form['inputName']
-        _altura = request.form['inputName2']
-
-        if _peso and _altura:
-          x = np.array([[2.1,2.0],[2.3,1.9],[2.0,2.5],[1.9,2.6],[2.0,2.2],[2.0,2.0]])
-          y = np.array([1,1,2,2,2,1])
-          clf = GaussianNB()
-          clf.fit(x,y)
-          GaussianNB(priors = None)
-          new_x = float(_peso)
-          new_y = float(_altura)
-          print(clf.predict([[new_x ,new_y ]]))
-          return 'OK'
-        else:
-            return json.dumps({'html':'<span>Enter the required fields</span>'})
+@app.route('/upload_image', methods=['POST'])
+def image():
+    img = Image.open(request.files['file'])
+    img.show()
+    return "OK"
 
 if __name__ == "__main__":
-    app.run(port=5002)
+    app.run(port=5000)

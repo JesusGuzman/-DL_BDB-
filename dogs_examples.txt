@@ -1,0 +1,13 @@
+Ejemplos de json para describir a un perro
+{"nombre":"ro", "raza":"do", "edad":"7", "color":"am", "descripcion":"pe", "fecha":"12", "lugar":"Me"}
+
+Ejemplos de request para la api
+
+Nueva descripcion de perro perdido
+curl -i -H "Content-Type: application/json" -X POST -d '{"nombre":"ro", "raza":"do", "edad":"7", "color":"am", "descripcion":"pe", "fecha":"12", "lugar":"Me"}' http://localhost:5000/new_dog
+
+Obtener todos los perros perdidos
+curl -i http://localhost:5000/dogs
+
+Subir imagen de perro perdido
+curl -i --X POST  -F file=@image.jpg http://localhost:5000/upload_image
