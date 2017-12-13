@@ -41,24 +41,30 @@ tasks = [
 def main():
     return render_template('index.html')
 
+@app.route('/signUp', methods=['POST'] )
+def test():
+    
+    var = request.form['inputName']
+    print var
+    return jsonify({'task': tasks}), 201
+ 
+
 @app.route('/dogs', methods=['GET'])
 def get_dogs():
     return jsonify({'tasks': tasks})
 
 @app.route('/new_dog', methods=['POST'])
 def add_dog():
-    #if not request.json or not 'nombre' in request.json:
-    #    abort(400)
     var = request.json['nombre']
     task = {
-        'id': tasks[-1]['id'] + 1,
-        'nombre': request.json['nombre'],
-        'raza': request.json['raza'],
-        'edad': request.json['edad'],
-        'color': request.json['color'],
-        'descripcion': request.json['descripcion'],
-        'fecha de extravio': request.json['fecha'],
-        'lugar de extravio': request.json['lugar']
+        #'id': tasks[-1]['id'] + 1,
+        #'nombre': request.json['nombre'],
+        #'raza': request.json['raza'],
+        #'edad': request.json['edad'],
+        #'color': request.json['color'],
+        #'descripcion': request.json['descripcion'],
+        #'fecha de extravio': request.json['fecha'],
+        #'lugar de extravio': request.json['lugar']
     }
     tasks.append(task)
     return jsonify({'task': task}), 201

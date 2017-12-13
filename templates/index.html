@@ -1,52 +1,169 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title> Dog Location</title>
+<head><meta http-equiv="Content-Type" content="text/html; charset=euc-jp">
+	<title>saXsa DL</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+        <meta property="og:title" content="">
+        <meta property="og:image" content="">
+        <meta property="og:url" content="">
+        <meta property="og:site_name" content="">
+        <meta property="og:description" content="">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="">
+        <meta name="twitter:title" content="">
+        <meta name="twitter:description" content="">
+        <meta name="twitter:image" content="">
+	
+        <link href="favicon.ico" rel="shortcut icon" /><!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet" /><!-- Bootstrap CSS File -->
+	<link href="../static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" /><!-- Libraries CSS Files -->
+	<link href="../static/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="../static/lib/animate-css/animate.min.css" rel="stylesheet" /><!-- Main Stylesheet File -->
+	<link href="../static/css/style.css" rel="stylesheet" />
 
-   
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <script src="../static/js/jquery-1.11.2.js"></script>
+    <script src="../static/js/signUp.js"></script>
+    <script src="../static/js/table.js"></script>
 
-   
-  </head>
 
-  <body>
+</head>
+<body>
+<div id="preloader"></div>
+<!--==========================
+  Hero Section
+============================-->
 
-    <div class="container">
-      <div class="header">
-        <h3 class="text-muted">Dog location</h3>
+<section id="hero">
+  <div class="hero-container">
+    <div class="wow fadeIn">
+      <div class="hero-logo"><img alt="Imperial" src="../static/img/logo.png" /></div>
+
+      <h1>Dog Location</h1>
+
+      <h2>saXsa <span class="rotating">Deep Learning, Analytics, Big Data</span></h2>
+
+      <div class="actions"><a class="btn-get-started" href="https://www.facebook.com/melomanosmx/">Facebook</a> </div>
+    </div>
+  </div>
+</section>
+<!--==========================
+  Header Section
+============================-->
+
+<header id="header">
+<div class="container">
+<div class="pull-left" id="logo"><a href="#hero"><img alt="" src="../static/img/logo.png" title="" /></a> <!-- --></div>
+
+<nav id="nav-menu-container">
+<ul class="nav-menu">
+	<li class="menu-active"><a href="#hero">Home</a></li>
+	<li><a href="#about">Registrar Mascota</a></li>
+	
+</ul>
+</nav>
+<!-- #nav-menu-container --></div>
+</header>
+<!-- #header -->
+<!--==========================
+  About Section
+============================-->
+<section id="about">
+  <div class="container wow fadeInUp">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="section-title">Registrar mascota</h3>
+        <div class="section-title-divider"></div>
+        <p class="section-description">Ingresa los datos de tu mascota</p>
       </div>
+    </div>
+  </div>
 
-      <div class="jumbotron">
-        <h1>Encuentre a su mejor amigo perdido</h1>
-        <p class="lead"></p>
-        
-       <!-- <p><a class="btn btn-lg btn-success" href="showSignUp" role="button">Prediccion</a></p>  -->      
+  <div class="container about-container wow fadeInUp">
+    <div class="row">
+      <div class="col-md-6 col-md-push-6 about-content">
+        <div class="jumbotron">
+          <h2>Ingrese los datos</h2>
+          <form class="form-signin">
+            <label for="inputName" class="sr-only">Nombre</label>
+            <input type="name" name="inputName" id="inputName" class="form-control" placeholder="Nombre" required autofocus>
 
-        <!-- <form method="post" enctype="multipart/form-data" id="image_upload_form" action="submit_image.php"> -->
-          <input type="file" name="images" id="images" multiple accept="image/x-png, image/gif, image/jpeg, image/jpg" />
-          <button type="submit" id="btn">Upload Files!</button>
-        <!-- </form> -->
-        <div id="response"></div>
-        <ul id="image-list">
-        </ul>
-  
-      </div>
+            <label for="inputName2" class="sr-only">Name2</label>
+            <input type="name" name="inputRaza" id="inputName2" class="form-control" placeholder="Raza" required autofocus>
 
-      <div class="row marketing">
-        <div class="col-lg-6">
-          <h4>Mascotas perdidas</h4>
-          <p>Ingrese la imagen se su perro perdido.</p>
+            <label for="inputName2" class="sr-only">Name2</label>
+            <input type="name" name="inputEdad" id="inputName2" class="form-control" placeholder="Edad" required autofocus>
+
+            <label for="inputName2" class="sr-only">Name2</label>
+            <input type="name" name="inputColor" id="inputName2" class="form-control" placeholder="Color" required autofocus>
+
+            <label for="inputName2" class="sr-only">Name2</label>
+            <input type="name" name="inputDescripcion" id="inputName2" class="form-control" placeholder="Descripcion" required autofocus>
+
+            <label for="inputName2" class="sr-only">Name2</label>
+            <input type="name" name="inputFecha" id="inputName2" class="form-control" placeholder="Fecha de extravio" required autofocus>
+
+            <label for="inputName2" class="sr-only">Name2</label>
+            <input type="name" name="inputLugar" id="inputName2" class="form-control" placeholder="Lugar de extravio" required autofocus>
+
+            <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="button">Enviar</button>
+          </form>
         </div>
       </div>
-
-      <footer class="footer">
-        <p>&copy; Saxsa 2017</p>
-      </footer>
-
     </div>
-  </body>
-</html>
+  </div>
+</section>
 
+<!--==========================
+  Hero Section
+============================-->
+
+<section id="portada">
+  <div class="portada-container">
+    <div class="wow fadeIn">
+
+    <h1>Dog Location</h1>
+
+    <div class="section-title-divider"></div>
+
+    <button id="btnCargar">Cargar</button>
+
+    <table style="width:100%" border="1" id="tabla">
+
+ <tr>
+ <th>ID</th>
+ <th>Nombres</th> 
+ <th>Apellidos</th>
+ </tr>
+ <tr>
+ <td>001</td>
+ <td>Jhon</td> 
+ <td>Doe</td>
+ </tr>
+ <tr>
+ <td>002</td>
+ <td>Maria</td> 
+ <td>Doe</td>
+ </tr>
+
+    </table>
+ 
+    
+  </div>
+</div>
+</section>
+
+<!-- #footer --><!-- Required JavaScript Libraries -->
+<script src="../static/lib/jquery/jquery.min.js"></script>
+<script src="../static/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="../static/lib/superfish/hoverIntent.js"></script>
+<script src="../static/lib/superfish/superfish.min.js"></script>
+<script src="../static/lib/morphext/morphext.min.js"></script>
+<script src="../static/lib/wow/wow.min.js"></script>
+<script src="../static/lib/stickyjs/sticky.js"></script>
+<script src="../static/lib/easing/easing.js"></script>
+<script src="../static/js/custom.js"></script>
+</body>
+</html>
