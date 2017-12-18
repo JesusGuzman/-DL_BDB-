@@ -71,8 +71,12 @@ def add_dog():
 
 @app.route('/upload_image', methods=['POST'])
 def image():
+    picture = request.files['file']
     img = Image.open(request.files['file'])
-    img.show()
+    #img.show()
+    img.save("final.jpg")
+    results =  os.system('python classify.py final.jpg')
+    print results
     return "OK"
 
 if __name__ == "__main__":
