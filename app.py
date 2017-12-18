@@ -44,10 +44,24 @@ def main():
 @app.route('/signUp', methods=['POST'] )
 def test():
     
-    var = request.form['inputName']
+    var = request.form['inputFecha']
+    imgs = request.files['inputFile']
+    img = Image.open(imgs)
+    img.show()
     print var
     return jsonify({'task': tasks}), 201
  
+
+@app.route('/many', methods=['POST'] )
+def test3():
+    imgs = request.files
+    data = dict(imgs)
+    datas = data['file[]']
+    for key in datas:
+      print key
+      img = Image.open(key)
+      img.show()
+    return jsonify({'task': tasks}), 201
 
 @app.route('/dogs', methods=['GET'])
 def get_dogs():
