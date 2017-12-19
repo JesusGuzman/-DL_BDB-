@@ -47,7 +47,11 @@
 
       <h2>saXsa <span class="rotating">Deep Learning, Analytics, Big Data</span></h2>
 
-      <div class="actions"><a class="btn-get-started" href="https://www.facebook.com/melomanosmx/">Facebook</a> </div>
+      <div class="actions">
+        <a class="btn-get-started" href="#about">Busco</a>
+        <a class="btn-get-started" href="#found">Encontre</a>
+        <a class="btn-get-started" href="https://www.facebook.com/bigdatamx">Adoptar</a>
+      </div>
     </div>
   </div>
 </section>
@@ -62,8 +66,9 @@
 <nav id="nav-menu-container">
 <ul class="nav-menu">
 	<li class="menu-active"><a href="#hero">Home</a></li>
-	<li><a href="#about">Registrar Mascota</a></li>
-	
+	<li><a href="#about">Busco Perro</a></li>
+	<li><a href="#found">Encontre un Perro</a></li>
+	<li><a href="#want">Adopte un Perro</a></li>
 </ul>
 </nav>
 <!-- #nav-menu-container --></div>
@@ -76,7 +81,7 @@
   <div class="container wow fadeInUp">
     <div class="row">
       <div class="col-md-12">
-        <h3 class="section-title">Registrar mascota</h3>
+        <h3 class="section-title">Busco perro</h3>
         <div class="section-title-divider"></div>
         <p class="section-description">Ingresa los datos de tu mascota</p>
       </div>
@@ -87,31 +92,50 @@
     <div class="row">
       <div class="col-md-6 col-md-push-6 about-content">
         <div class="jumbotron">
-          <h2>Ingrese los datos</h2>
-          <form class="form-signin">
-            <label for="inputName" class="sr-only">Nombre</label>
-            <input type="name" name="inputName" id="inputName" class="form-control" placeholder="Nombre" required autofocus>
-
-            <label for="inputName2" class="sr-only">Name2</label>
-            <input type="name" name="inputRaza" id="inputName2" class="form-control" placeholder="Raza" required autofocus>
-
-            <label for="inputName2" class="sr-only">Name2</label>
-            <input type="name" name="inputEdad" id="inputName2" class="form-control" placeholder="Edad" required autofocus>
-
-            <label for="inputName2" class="sr-only">Name2</label>
-            <input type="name" name="inputColor" id="inputName2" class="form-control" placeholder="Color" required autofocus>
-
-            <label for="inputName2" class="sr-only">Name2</label>
-            <input type="name" name="inputDescripcion" id="inputName2" class="form-control" placeholder="Descripcion" required autofocus>
-
-            <label for="inputName2" class="sr-only">Name2</label>
+          <h3>Ingresa los datos de tu perro</h3>
+          
+          <form method="post" id="formulario" enctype="multipart/form-data">
+            <label for="inputName" class="sr-only">NombrePerro</label>
+            <input type="name" name="inputDogName" id="inputDogName" class="form-control" placeholder="Nombre del perro" required autofocus>
+      	   
+	    <label for="inputName2" class="sr-only">FechaExt</label>
             <input type="name" name="inputFecha" id="inputName2" class="form-control" placeholder="Fecha de extravio" required autofocus>
 
-            <label for="inputName2" class="sr-only">Name2</label>
+            <label for="inputName3" class="sr-only">LugarExt</label>
             <input type="name" name="inputLugar" id="inputName2" class="form-control" placeholder="Lugar de extravio" required autofocus>
+	    
+	    <label for="inputName4" class="sr-only">Color</label>
+            <input type="name" name="inputColor" id="inputColor" class="form-control" placeholder="Color" required autofocus>
 
-            <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="button">Enviar</button>
-          </form>
+	    <label for="inputName5" class="sr-only">Talla</label>
+            <input type="name" name="inputTalla" id="inputTalla" class="form-control" placeholder="Talla" required autofocus>
+	    
+            <label for="inputName5" class="sr-only">Sexo</label>
+            <input type="name" name="inputSexo" id="inputSexo" class="form-control" placeholder="Sexo" required autofocus>
+
+	    <br></br>
+	    <h3>Ingresa tus datos</h3>
+
+	    <label for="inputName6" class="sr-only">Nombre</label>
+            <input type="name" name="inputName" id="inputName" class="form-control" placeholder="Tu nombre" required autofocus>
+
+            <label for="inputName7" class="sr-only">email</label>
+            <input type="name" name="inputEmail" id="inputEmail" class="form-control" placeholder="E-mail" required autofocus>
+
+            <br></br> 
+            Subir imagen: <input type="file" id="file" name="file[]" multiple>
+            <br></br>
+            <button type="button" class="btn btn-lg btn-primary btn-block"  id="btn">Enviar</button>
+<!--
+            Subir imagen: <input type="file" id="file" name="file[]" multiple>
+            <button type="button" id="btn">Subir imagenes</button>
+-->
+          
+	  </form>
+          <div id="vista-previa"></div>
+          <div id="respuesta"></div>
+
+          
         </div>
       </div>
     </div>
@@ -122,13 +146,13 @@
   encontre un perro Section
   #CAMBIAR NOMBRE A LA SECCION
 ============================-->
-<section id="about">
+<section id="found">
   <div class="container wow fadeInUp">
     <div class="row">
       <div class="col-md-12">
         <h3 class="section-title">Encontre un perro </h3>
         <div class="section-title-divider"></div>
-        <p class="section-description">Ingresa los datos de tu mascota</p>
+        <p class="section-description">Ingresa los datos de la mascota encontrada</p>
       </div>
     </div>
   </div>
@@ -137,18 +161,37 @@
     <div class="row">
       <div class="col-md-6 col-md-push-6 about-content">
         <div class="jumbotron">
-          <h2>Ingrese los datos</h2>
+          <h2>Ingrese los datos del perro</h2>
 
           <form  class="form-signin"   enctype="multipart/form-data" id="formuploadajax" method="post">
       
-            <label for="inputName2" class="sr-only">Name2</label>
-            <input type="name" name="inputFecha" id="inputFecha" class="form-control" placeholder="Fecha de extravio" required autofocus>
+            <label for="inputName10" class="sr-only">FechaEn</label>
+            <input type="name" name="inputFecha" id="inputFecha" class="form-control" placeholder="Fecha en que lo encontraste" required autofocus>
 
-            <br />
+            <label for="inputName11" class="sr-only">LugarEn</label>
+            <input type="name" name="inputLugar" id="inputLugar" class="form-control" placeholder="Lugar donde lo encontraste" required autofocus>
+           
+            <label for="inputName12" class="sr-only">Sexo</label>
+            <input type="name" name="inputSexo" id="inputSexo" class="form-control" placeholder="Sexo" required autofocus>
+	
+   <br></br>
+            <h3>Ingresa tus datos</h3>
+
+            <label for="inputName13" class="sr-only">Nombre</label>
+            <input type="name" name="inputName" id="inputName" class="form-control" placeholder="Tu nombre" required autofocus>
+
+            <label for="inputName14" class="sr-only">email</label>
+            <input type="name" name="inputEmail" id="inputEmail" class="form-control" placeholder="E-mail" required autofocus>
+
+            
             <input  type="file" id="inputFile" name="inputFile"/>
-            <br />
-            <input type="submit" value="Subir archivos" class="btn btn-lg btn-primary btn-block" />
-          </form>
+            
+            <input type="submit" value="Enviar" class="btn btn-lg btn-primary btn-block" />
+  
+       </form>
+            <div id="vista-previa"></div>
+                   <div id="respuesta"></div>
+
           <div 
              id="mensaje">
           </div>
@@ -162,7 +205,8 @@
   buscar perro Section
   #CAMBIAR NOMBRE A LA SECCION
 ============================-->
-<section id="about">
+<!--
+<section id="want">
   <div class="container wow fadeInUp">
     <div class="row">
       <div class="col-md-12">
@@ -179,12 +223,15 @@
         <div class="jumbotron">
           <h2>Mi perro es</h2>
         
-<form method="post" id="formulario" enctype="multipart/form-data">
-    Subir imagen: <input type="file" id="file" name="file[]" multiple>
-    <button type="button" id="btn">Subir imagenes</button>
- </form>
-  <div id="vista-previa"></div>
-  <div id="respuesta"></div>
+          <form method="post" id="formulario2" enctype="multipart/form-data">
+            <label for="inputName2" class="sr-only">Name2</label>
+            <input type="name" name="inputFecha" id="inputName2" class="form-control" placeholder="Fecha de extravio" required autofocus>
+           
+            Subir imagen: <input type="file" id="file" name="file[]" multiple>
+            <button type="button" id="btn">Subir imagenes</button>
+          </form>
+          <div id="vista-previa"></div>
+          <div id="respuesta"></div>
 
         </div>
       </div>
@@ -192,6 +239,7 @@
   </div>
 </section>
 
+-->
 
 <!--==========================
   Hero Section
