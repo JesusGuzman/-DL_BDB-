@@ -61,7 +61,8 @@ def test3():
       print key
       img = Image.open(key)
       img.show()
-    return jsonify({'task': tasks}), 201
+    #return jsonify({'task': tasks}), 201
+    return "hola", 201
 
 @app.route('/dogs', methods=['GET'])
 def get_dogs():

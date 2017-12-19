@@ -1,23 +1,3 @@
-/*$(function(){
-	$('#btnSignUp').click(function(){
-		
-		$.ajax({
-			url: '/signUp',
-			data: $('form').serialize(),
-                        dataType: "json",
-			type: 'POST',
-			success: function(response){
-				console.log(response);
-			
-			},
-			error: function(error){
-				console.log(error);
-			}
-		});
-	});
-});
-*/
-
      $(function(){   
        $("#file").on("change", function(){
            /* Limpiar vista previa */
@@ -49,7 +29,7 @@
        
        $("#btn").on("click", function(){
             var formData = new FormData($("#formulario")[0]);
-            var ruta = "multiple-ajax.php";
+            //var ruta = "multiple-ajax.php";
             $.ajax({
                 url: '/many',
                 type: "POST",
