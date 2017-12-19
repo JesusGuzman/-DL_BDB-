@@ -1,0 +1,2 @@
+cd ./tensor
+mkdir ola

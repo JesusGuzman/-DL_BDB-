@@ -25,7 +25,7 @@ $(function(){
             formData.append("dato", "valor");
             //formData.append(f.attr("name"), $(this)[0].files[0]);
             $.ajax({
-                url: "/signUp",
+                url: "/upload_image",
                 type: "post",
                 dataType: "json",
                 data: formData,

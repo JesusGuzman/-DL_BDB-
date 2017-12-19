@@ -1,5 +1,6 @@
 from flask import Flask, render_template, json, request, jsonify
 from PIL import Image
+import os
 
 app = Flask(__name__)
 
@@ -86,12 +87,13 @@ def add_dog():
 
 @app.route('/upload_image', methods=['POST'])
 def image():
-    picture = request.files['file']
-    img = Image.open(request.files['file'])
-    #img.show()
-    img.save("final.jpg")
-    results =  os.system('python classify.py final.jpg')
-    print results
+    img = Image.open(request.files['inputFile'])
+    img.show()
+    img.save("./tensor/final.jpg")
+    os.system('cd ./tensor' && 'mkdir ola' )
+    os.system('mkdir ola')
+    #results =  os.system('python classify.py final.jpg')
+    #print results
     return "OK"
 
 if __name__ == "__main__":

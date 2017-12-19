@@ -2,7 +2,8 @@ $(function(){
 	$('#btnSignUp').click(function(){
 		
 		$.ajax({
-			url: '/signUp',
+			//url: '/signUp',
+			url: '/upload_image',
 			data: $('form').serialize(),
                         dataType: "json",
 			type: 'POST',
