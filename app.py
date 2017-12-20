@@ -1,42 +1,9 @@
 from flask import Flask, render_template, json, request, jsonify
 from PIL import Image
 import os
+from request_DL import *
 
 app = Flask(__name__)
-
-tasks = [
-    {
-        'id': 1,
-        'nombre': u'Cactus',
-        'raza': u'salchicha',
-        'edad': u'2 anios',
-        'color': u'negro con cafe',
-        'descripcion': u'Es un perro muy docil trae un collar rojo', 
-        'fecha de extravio': u'11-11-2017',
-        'lugar de extravio': u'Amsterdam 173, Condesa, CDMX'
-    },
-    {
-        'id': 2,
-        'nombre': u'tayson',
-        'raza': u'pitbull',
-        'edad': u'5 anios',
-        'color': u'Gris/blue',
-        'descripcion': u'Tyson es un perro muy grande y gordo suele traer la lengua de fuera', 
-        'fecha de extravio': u'01-12-2016',
-        'lugar de extravio': u'Av Cuauhtemoc 1236, Benito Juarez, CDMX'
-    },
-    {
-        'id': 3,
-        'nombre': u'snoppy',
-        'raza': u'dogo argentino',
-        'edad': u'8 meses',
-        'color': u'blanco',
-        'descripcion': u'en perro muy grande con collar de cuero y una cicatriz en la oreja', 
-        'fecha de extravio': u'23-04-2017',
-        'lugar de extravio': u'Centro Atlixco, Puebla'
-    }
-]
-
 
 @app.route('/')
 def main():
@@ -55,14 +22,15 @@ def test():
 
 @app.route('/many', methods=['POST'] )
 def test3():
+    get_form_found(request.form)   
     imgs = request.files
     data = dict(imgs)
     datas = data['file[]']
     for key in datas:
       print key
       img = Image.open(key)
-      img.show()
-    #return jsonify({'task': tasks}), 201
+      #img.show()
+      img.save("./tensor/images/final.jpg")
     return "hola", 201
 
 @app.route('/dogs', methods=['GET'])
@@ -90,11 +58,44 @@ def image():
     img = Image.open(request.files['inputFile'])
     img.show()
     img.save("./tensor/final.jpg")
-    os.system('cd ./tensor' && 'mkdir ola' )
-    os.system('mkdir ola')
+    #os.system('cd ./tensor' && 'mkdir ola' )
+    #os.system('mkdir ola')
     #results =  os.system('python classify.py final.jpg')
     #print results
     return "OK"
+
+tasks = [
+    {
+        'id': 1,
+        'nombre': u'Cactus',
+        'raza': u'salchicha',
+        'edad': u'2 anios',
+        'color': u'negro con cafe',
+        'descripcion': u'Es un perro muy docil trae un collar rojo',
+        'fecha de extravio': u'11-11-2017',
+        'lugar de extravio': u'Amsterdam 173, Condesa, CDMX'
+    },
+    {
+        'id': 2,
+        'nombre': u'tayson',
+        'raza': u'pitbull',
+        'edad': u'5 anios',
+        'color': u'Gris/blue',
+        'descripcion': u'Tyson es un perro muy grande y gordo suele traer la lengua de fuera',
+        'fecha de extravio': u'01-12-2016',
+        'lugar de extravio': u'Av Cuauhtemoc 1236, Benito Juarez, CDMX'
+    },
+    {
+        'id': 3,
+        'nombre': u'snoppy',
+        'raza': u'dogo argentino',
+        'edad': u'8 meses',
+        'color': u'blanco',
+        'descripcion': u'en perro muy grande con collar de cuero y una cicatriz en la oreja',
+        'fecha de extravio': u'23-04-2017',
+        'lugar de extravio': u'Centro Atlixco, Puebla'
+    }
+]
 
 if __name__ == "__main__":
     app.run(port=5000)

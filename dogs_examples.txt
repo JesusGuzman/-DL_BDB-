@@ -11,3 +11,8 @@ curl -i http://localhost:5000/dogs
 
 Subir imagen de perro perdido
 curl -i --X POST  -F file=@image.jpg http://localhost:5000/upload_image
+
+
+from pymongo import MongoClient
+client = MongoClient()
+http://api.mongodb.com/python/current/tutorial.html

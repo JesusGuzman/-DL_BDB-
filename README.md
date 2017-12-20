@@ -14,3 +14,5 @@ Pillow
 $ python app.py
 ```
 
+configurar acceso
+https://www.google.com/settings/security/lesssecureapps
