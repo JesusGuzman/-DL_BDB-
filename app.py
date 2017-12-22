@@ -2,6 +2,7 @@ from flask import Flask, render_template, json, request, jsonify
 from PIL import Image
 import os
 from request_DL import *
+import datetime
 
 app = Flask(__name__)
 
@@ -22,15 +23,26 @@ def test():
 
 @app.route('/many', methods=['POST'] )
 def test3():
-    get_form_found(request.form)   
+    print get_form_found(request.form)   
     imgs = request.files
+    name_dog = request.form['inputDogName']
+    email = request.form['inputEmail']
+    date_now = datetime.datetime.now().strftime("%y-%m-%d-%H-%M-%S")
+    name_folder = name_dog +"_"+ email+"_"+date_now+"/"
     data = dict(imgs)
     datas = data['file[]']
+     
+    create_folder = "mkdir ./cnn/training_dataset/"+name_folder
+    os.system(create_folder)
+    
+    #pwd = "./cnn/training_dataset/"+name_folder+"final.jpg"
+    n = 1
     for key in datas:
-      print key
+      pwd = "./cnn/training_dataset/"+name_folder+"perro"+str(n)+".jpg"
       img = Image.open(key)
-      #img.show()
-      img.save("./tensor/images/final.jpg")
+      #img.save("./cnn/training_dataset/final.jpg")
+      img.save(pwd)
+      n=n+1
     return "hola", 201
 
 @app.route('/dogs', methods=['GET'])
@@ -57,7 +69,8 @@ def add_dog():
 def image():
     img = Image.open(request.files['inputFile'])
     img.show()
-    img.save("./tensor/final.jpg")
+    img.save("./cnn/final.jpg")
+    os.system('bash ./cnn/run_cnn.sh')
     #os.system('cd ./tensor' && 'mkdir ola' )
     #os.system('mkdir ola')
     #results =  os.system('python classify.py final.jpg')
