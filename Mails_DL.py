@@ -1,60 +1,47 @@
-# Send an HTML email with an embedded image and a plain text message for
-# email clients that don't want to display the HTML.
-
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
 from email.MIMEImage import MIMEImage
 from smtplib import SMTP
 
-def main():
-  # Define these once; use them twice!
+def send_mail_dl():
   strFrom = 'jessguzman044@gmail.com'
-  strTo = 'lloliztli@ciencias.unam.mx'
-  #strTo = ['<ollin> lloliztli@ciencias.unam.mx', '<fernanda> fermfsp@hotmail.com', '<david> davidcarcon@ciencias.unam.mx', '<rocio> garcia_fr89@yahoo.com.mx', '<raul> nicolas_ang2000@hotmail.com', ' <ilich> ilich.serna@gmail.com', '<Doc> saxsa2000@gmail.com', '<rach> rcgsaxsa@gmail.com', 'nayely <nayeli.diazc@gmail.com>']
+  strTo = 'chuchoska305t@hotmail.com'
 
-  # Create the root message and fill in the from, to, and subject headers
   msgRoot = MIMEMultipart('related')
   msgRoot['Subject'] = 'Alguien encontro a tu perro'
   msgRoot['From'] = strFrom
   msgRoot['To'] = strTo
   msgRoot.preamble = 'This is a multi-part message in MIME format.'
 
-  # Encapsulate the plain and HTML versions of the message body in an
-  # 'alternative' part, so message agents can decide which they want to display.
   msgAlternative = MIMEMultipart('alternative')
   msgRoot.attach(msgAlternative)
 
   msgText = MIMEText('This is the alternative plain text message.')
   msgAlternative.attach(msgText)
-  ##############
-  features = "perro grande y fuerte con una cicatriz en la oreja"
+  ###############################
+  features = "perro fuerte con una cicatriz en la oreja"
   name = "Lazi"
 
   message = menssage_mail(name, features)
   ###############
-  # We reference the image in the IMG SRC attribute by the ID we give it below
   msgText = MIMEText(message, "html", _charset="utf-8")
-  #msgText = MIMEText('<b>Some <i>HTML</i> text</b> and an image.<br><img src="cid:image1"><br>Nifty!', 'html')
   msgAlternative.attach(msgText)
 
-  # This example assumes the image is in the current directory
-  fp = open('image.jpg', 'rb')
+  fp = open('jess.jpg', 'rb')
   msgImage = MIMEImage(fp.read())
   fp.close()
 
-  # Define the image's ID as referenced above
   msgImage.add_header('Content-ID', '<image1>')
   msgRoot.attach(msgImage)
 
-
-  # Send the email (this example assumes SMTP authentication is required)
   smtp = SMTP('smtp.gmail.com', 587)
   smtp.ehlo()
   smtp.starttls()
   smtp.ehlo()
-  smtp.login(strFrom, '')
+  smtp.login(strFrom, '') #PASSWD
   smtp.sendmail(strFrom, strTo, msgRoot.as_string())
   smtp.quit()
+
 
 def menssage_mail(nombre, caracteristicas):
   name = nombre
@@ -146,5 +133,3 @@ SAXSA Dog Location<br />
   """.format(**locals())
   return message
 
-if __name__ == "__main__":
- main()

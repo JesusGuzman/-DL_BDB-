@@ -3,6 +3,7 @@ from PIL import Image
 import os
 from request_DL import *
 from mongo_DL import *
+from Mails_DL import *
 import datetime
 
 app = Flask(__name__)
@@ -26,6 +27,7 @@ def test():
 def test3():
     task = get_form_found(request.form)
     print insert_dog_lost(task)
+    send_mail_dl()
 #    tasks.append(task)
 #    imgs = request.files
 #    name_dog = request.form['inputDogName']
