@@ -29,7 +29,6 @@
        
        $("#btn").on("click", function(){
             var formData = new FormData($("#formulario")[0]);
-            //var ruta = "multiple-ajax.php";
             $.ajax({
                 url: '/many',
                 type: "POST",
